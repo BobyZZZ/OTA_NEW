@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x860"
+    android:layout_height="@dimen/y490"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/corners_bg"
+    android:layout_gravity="center">
+
+
+    <TextView
+        android:id="@+id/tips_checked_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="v1.0.0"
+        android:textSize="@dimen/x30"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/y30"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_marginTop="@dimen/y25"
+        android:layout_marginLeft="@dimen/x2"
+        android:layout_marginRight="@dimen/x2"
+        android:background="@color/transparent_write"/>
+
+    <TextView
+        android:id="@+id/tips_checked_log"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:text="v1.0.0"
+        android:textSize="@dimen/x20"
+        android:textColor="#ffaaaaaa"
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginLeft="@dimen/x100"
+        android:layout_marginRight="@dimen/x100"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:orientation="horizontal"
+        android:layout_weight="0"
+        android:paddingLeft="@dimen/x10"
+        android:paddingRight="@dimen/x10">
+        <Button
+            android:id="@+id/btn_tips1"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="@dimen/y50"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x40"
+            android:layout_marginRight="@dimen/x40"
+            android:background="@drawable/corners_btn"
+            android:text="@string/remind_me"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/x20" />
+        <Button
+            android:id="@+id/btn_tips2"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="@dimen/y50"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x40"
+            android:layout_marginRight="@dimen/x40"
+            android:background="@drawable/corners_btn"
+            android:text="@string/ignore"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x20" />
+        <Button
+            android:id="@+id/btn_tips3"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="@dimen/y50"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x40"
+            android:layout_marginRight="@dimen/x40"
+            android:background="@drawable/corners_btn"
+            android:text="@string/load_back_now"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x20" />
+</LinearLayout>
+
+</LinearLayout>

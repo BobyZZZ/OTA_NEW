@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.ist.otaservice"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        flavorDimensions "default"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (outputFileName.endsWith('.apk')) {
+                outputFileName = "IstOta_V866_${productFlavors[0].name}_${buildType.name}_v${versionName}.${versionCode}_${buildTime()}.apk"//每次只需更新versionCode
+            }
+        }
+    }
+
+    signingConfigs{
+        release{
+            storeFile file("./M9632-android.jks")
+            storePassword "M9632-android"
+            keyAlias "M9632-android"
+            keyPassword "M9632-android"
+        }
+        debug{
+            storeFile file("./M9632-android.jks")
+            storePassword "M9632-android"
+            keyAlias "M9632-android"
+            keyPassword "M9632-android"
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    productFlavors {
+        //aha 866.2
+        aha_866{
+            manifestPlaceholders= [CHANNEL_APPNAME:"@string/app_name_aha"]//应用名称
+        }
+        //公版
+        ist_public{
+            manifestPlaceholders= [CHANNEL_APPNAME:"@string/app_name"]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //rx系列
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation project(':httplib')
+
+}
+
+// 打包时间
+def buildTime() {
+    return new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("GMT+08:00"))
+}
